@@ -20,10 +20,10 @@ public class Pasteleria {
         ficheroSalida = archivoSalida;
         solucion = new Nodo (filas, Integer.MIN_VALUE);
         conjuntoNodosVivos.add(solucion);
-        
+       
         //SOLO PARA PRUEBA, VALORES DE EJEMPLO
     }
-    
+   
     public int[][] getMatrizBeneficio() {
         return matrizBeneficio;
     }
@@ -43,7 +43,7 @@ public class Pasteleria {
     public void setSolucion(Nodo solucion) {
         this.solucion = solucion;
     }
-    
+   
     public void leerArchivo(String archivo) {
         try {
             String cadena = new String();
@@ -102,13 +102,13 @@ public class Pasteleria {
                 }
                 br.close();
             }
-            
+           
         }
         catch(Exception e){
             System.err.println(e);
-        }        
+        }       
     }
-    
+   
     public void escribirArchivo (){
         try {
             int beneficio = this.getSolucion().getCosteAsignado();
@@ -129,23 +129,23 @@ public class Pasteleria {
         catch(Exception e) {
             System.err.println(e);
         }
-        
-    }    
-    
+       
+    }   
+   
     //Este método devuelve true si hay que podar ese nodo
     //Un nodo se poda si su coste de prevision es mayor que el coste de una solucion
     public boolean poda (Nodo n) {
         return n.getCostePrevision() < solucion.getCosteAsignado();
     }
-    
+   
     public boolean esSolucion (Nodo n) {
         return n.esSolucion(n);
     }
-    
+   
     public boolean primerNodo(Nodo n) {
         return n.getCosteAsignado() == Integer.MIN_VALUE;
     }
-    
+   
     //Devuelve el número de cocinero que tiene el mayor beneficio para ese tipo de paste, siempre que no esté asignado todavía
     public int valorMaximo(boolean [] cocineros, int tipoPastel) {
         int k = 0;
@@ -157,7 +157,7 @@ public class Pasteleria {
             }
         return k;
     }
-    
+   
     //Dado un nodo, se generan sus hijos y se añaden al conjunto de nodos vivos
     public void expandirNodo (Nodo n) {
         int pedido = n.getUltimoAgente();
@@ -237,11 +237,11 @@ public class Pasteleria {
             conjuntoNodosVivos.sort();
         }
     }
-    
-    
-    
+   
+   
+   
     public Nodo ramificaYPoda(Nodo n) {
-        //while (! conjuntoNodosVivos.isEmpty()) 
+        //while (! conjuntoNodosVivos.isEmpty())
             if (esSolucion(n) && n.getCosteAsignado() > solucion.getCosteAsignado()) {
                 solucion = new Nodo(n);
                 conjuntoNodosVivos.remove(n);
