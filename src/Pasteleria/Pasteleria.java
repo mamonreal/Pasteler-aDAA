@@ -6,7 +6,7 @@ public class Pasteleria {
     private final int [][] matrizCoste = {{2,5,3},{5,3,2},{6,4,9},{6,3,8},{7,5,8}};
     private final int [] pedidos = {1,1,3,2,1};
     private Cola conjuntoNodosVivos = new Cola();
-    private Nodo solucion = new Nodo (5, Integer.MAX_VALUE);
+    private Nodo solucion;
 
     @SuppressWarnings("empty-statement")
     public Pasteleria (int n, int m) {
