@@ -2,6 +2,7 @@ package Pasteleria;
 
 public class Principal {
     public static void main (String [] args) {
+        //Pasteleria pasteleria = new Pasteleria(args[0], args[1]);
         Pasteleria pasteleria = new Pasteleria("entrada.txt", "salida.txt");
         imprimirSolucion(pasteleria.ramificaYPoda(pasteleria.getSolucion()));
         pasteleria.escribirArchivo();

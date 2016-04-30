@@ -17,12 +17,18 @@ public class Comparador implements Comparator {
     public int compare(Object o1, Object o2) {
         Nodo n = (Nodo) o1;
         Nodo s = (Nodo) o2;
-        if (n.getCostePrevision() > s.getCostePrevision())
+        if(n.getUltimoAgente() > s.getUltimoAgente())
             return -1;
-        else if (n.getCostePrevision() < s.getCostePrevision())
+        else if(n.getUltimoAgente() < s.getUltimoAgente())
             return 1;
-        else
-            return 0;
+        else {
+            if (n.getCostePrevision() > s.getCostePrevision())
+                return -1;
+            else if (n.getCostePrevision() < s.getCostePrevision())
+                return 1;
+            else
+                return 0;
+        }
     }
     
 }
