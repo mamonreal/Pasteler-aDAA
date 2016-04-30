@@ -2,8 +2,10 @@ package Pasteleria;
 
 public class Principal {
     public static void main (String [] args) {
-        Pasteleria pasteleria = new Pasteleria(5, 3);
+        Pasteleria pasteleria = new Pasteleria("entrada.txt", "salida.txt");
         imprimirSolucion(pasteleria.ramificaYPoda(pasteleria.getSolucion()));
+        pasteleria.escribirArchivo();
+        //System.out.println(System.getProperty("user.dir")) ;
     }
     
     public static void imprimirSolucion (Nodo n) {
