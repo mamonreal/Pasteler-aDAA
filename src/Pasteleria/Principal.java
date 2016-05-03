@@ -4,8 +4,12 @@ public class Principal {
     public static void main (String [] args) {
         //Pasteleria pasteleria = new Pasteleria(args[0], args[1]);
         Pasteleria pasteleria = new Pasteleria("entrada.txt", "salida.txt");
-        imprimirSolucion(pasteleria.ramificaYPoda(pasteleria.getSolucion()));
+        //ALGORITMO RECURSIVO
+        //imprimirSolucion(pasteleria.ramificaYPodaRecursivo(pasteleria.getSolucion()));
+        //ALGORITMO ITERATIVO
+        imprimirSolucion(pasteleria.ramificaYPoda());
         pasteleria.escribirArchivo();
+        //Muestra la carpeta predeterminada en la que están los archivos
         //System.out.println(System.getProperty("user.dir")) ;
     }
     

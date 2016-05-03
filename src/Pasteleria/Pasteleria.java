@@ -237,27 +237,41 @@ public class Pasteleria {
             conjuntoNodosVivos.sort();
         }
     }
+    
+    public Nodo ramificaYPoda() {
+        while (! conjuntoNodosVivos.isEmpty()) {
+            Nodo s = conjuntoNodosVivos.getNodo();
+            if (this.esSolucion(s)) {
+                solucion = s;
+                conjuntoNodosVivos.remove(s);
+            }
+            else if (poda(s))
+                conjuntoNodosVivos.remove(s);
+            else
+                expandirNodo(s);
+        }
+        return solucion;
+    }
    
    
    
-    public Nodo ramificaYPoda(Nodo n) {
-        //while (! conjuntoNodosVivos.isEmpty())
-            if (esSolucion(n) && n.getCosteAsignado() > solucion.getCosteAsignado()) {
-                solucion = new Nodo(n);
-                conjuntoNodosVivos.remove(n);
-                if (! conjuntoNodosVivos.isEmpty())
-                    ramificaYPoda(conjuntoNodosVivos.getNodo());
-            }
-            else if (poda(n)) {
-                conjuntoNodosVivos.remove(n);
-                if (! conjuntoNodosVivos.isEmpty())
-                    ramificaYPoda(conjuntoNodosVivos.getNodo());
-            }
-            else {
-                expandirNodo(n);
-                if (! conjuntoNodosVivos.isEmpty())
-                    ramificaYPoda(conjuntoNodosVivos.getNodo());
-            }
+    public Nodo ramificaYPodaRecursivo(Nodo n) {
+        if (esSolucion(n) && n.getCosteAsignado() > solucion.getCosteAsignado()) {
+            solucion = new Nodo(n);
+            conjuntoNodosVivos.remove(n);
+            if (! conjuntoNodosVivos.isEmpty())
+                ramificaYPodaRecursivo(conjuntoNodosVivos.getNodo());
+        }
+        else if (poda(n)) {
+            conjuntoNodosVivos.remove(n);
+            if (! conjuntoNodosVivos.isEmpty())
+                ramificaYPodaRecursivo(conjuntoNodosVivos.getNodo());
+        }
+        else {
+            expandirNodo(n);
+            if (! conjuntoNodosVivos.isEmpty())
+                ramificaYPodaRecursivo(conjuntoNodosVivos.getNodo());
+        }
         return solucion;
     }
 }
